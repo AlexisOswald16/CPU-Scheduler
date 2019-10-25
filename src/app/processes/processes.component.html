@@ -1,0 +1,18 @@
+<p>Number of Processes:
+    <span style="padding-left: 50px">
+        <select [(ngModel)]="selectedNumber" ng-model = "numberOfProcesses" (change)= "createTable()"> 
+            <option ng-option value="1">1</option>
+            <option ng-option value="2">2</option>
+            <option ng-option value="3">3</option>
+            <option ng-option value="4">4</option>
+            <option ng-option value="5">5</option>
+            <option ng-option value="6">6</option>
+            <option ng-option value="7">7</option>
+            <option ng-option value="8">8</option>
+            <option ng-option value="9">9</option>
+            <option ng-option value="10">10</option>
+          </select>
+    </span>
+</p>
+
+{{selectedNumber}}

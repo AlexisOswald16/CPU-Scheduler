@@ -1,0 +1,15 @@
+<p>Gannt Chart for {{selectedAlgorithm}}</p>
+
+<!--<div *ngIf="buttonWasClicked">Content to render when condition is true.</div>-->
+
+<p>Scheduling Algorithm:
+    <span style="padding-left: 50px">
+        <select [(ngModel)]="selectedAlgorithm" ng-model = "algorithm-type">
+            <option *ngFor="let algorithm of algorithms"> {{algorithm.name}}</option>
+        </select>
+    </span>
+</p>
+
+
+
+
