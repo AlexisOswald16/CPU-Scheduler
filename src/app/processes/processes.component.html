@@ -1,6 +1,7 @@
-<p>Number of Processes:
+<div id = "processesDiv">
+<p id = "processesTag">Number of Processes:
     <span style="padding-left: 50px">
-        <select [(ngModel)]="selectedNumber" ng-model = "numberOfProcesses" (change)= "createTable()"> 
+        <select [(ngModel)]="selectedNumber" ng-model = "numberOfProcesses" (change)= "createTable(selectedNumber)"> 
             <option ng-option value="1">1</option>
             <option ng-option value="2">2</option>
             <option ng-option value="3">3</option>
@@ -14,5 +15,6 @@
           </select>
     </span>
 </p>
+</div>
 
 {{selectedNumber}}
