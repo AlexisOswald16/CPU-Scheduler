@@ -10,6 +10,7 @@ export class ProcessesComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    
   }
 
   clearTable(table){ //clears all fields (reset on button click, essentially)

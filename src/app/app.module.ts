@@ -6,12 +6,14 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { AlgorithmsComponent } from './algorithms/algorithms.component';
 import { ProcessesComponent } from './processes/processes.component';
+import { ButtonsComponent } from './buttons/buttons.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AlgorithmsComponent,
-    ProcessesComponent
+    ProcessesComponent,
+    ButtonsComponent
   ],
   imports: [
     BrowserModule,    
