@@ -1,19 +1,43 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { tryParse } from 'selenium-webdriver/http';
+
+var listOfFields: HTMLInputElement[] = [];
 
 @Component({
   selector: 'app-processes',
   templateUrl: './processes.component.html',
   styleUrls: ['./processes.component.css']
 })
-export class ProcessesComponent implements OnInit {
 
+
+export class ProcessesComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
     
   }
 
+  randomBurstTimes(selectedNumber){ // creates correct amount of random integers (for burst times)
+    var amountNeeded = selectedNumber;
+    let listOfRand: number[] = [];
+    for(let i = 0; i < amountNeeded; i++){
+      listOfRand.push(this.getRandomInt(10));
+    }
+    this.fillTextFields(listOfRand);
+  }
+
+  fillTextFields(listOfRand){ // fills random burst times on front end
+    for(let i = 0; i < listOfRand.length; i++){
+     listOfFields[i].defaultValue = listOfRand[i].toString();
+    }
+  }
+
+  getRandomInt(max) { // creates random integers (for burst times)
+    return Math.floor(Math.random() * Math.floor(max));
+  }
+
   clearTable(table){ //clears all fields (reset on button click, essentially)
+    listOfFields = [];
     var tableRows = table.getElementsByTagName('tr');
     var rowCount = tableRows.length;
     for (var x=rowCount-1; x>0; x--) {
@@ -126,7 +150,8 @@ export class ProcessesComponent implements OnInit {
     r1c3.innerHTML="3"
     r1c4.innerHTML="4"
     this.appendChildren(newRow, r1c1, r1c2, r1c3, r1c4);
-    table.insertBefore(newRow, table.childNodes[1]);  
+    table.insertBefore(newRow, table.childNodes[1]); 
+    listOfFields.push(r1c2);
   }
 
   createRow2(table){
@@ -141,7 +166,9 @@ export class ProcessesComponent implements OnInit {
     r2c3.innerHTML="3"
     r2c4.innerHTML="4"
     this.appendChildren(newRow, r2c1, r2c2, r2c3, r2c4);
-    table.insertBefore(newRow, table.childNodes[2]);  
+    table.insertBefore(newRow, table.childNodes[2]); 
+    listOfFields.push(r2c2);
+ 
   }
 
   createRow3(table){
@@ -157,6 +184,8 @@ export class ProcessesComponent implements OnInit {
     r3c4.innerHTML="4"
     this.appendChildren(newRow, r3c1, r3c2, r3c3, r3c4);
     table.insertBefore(newRow, table.childNodes[3]);  
+    listOfFields.push(r3c2);
+
   }
 
   createRow4(table){
@@ -172,6 +201,8 @@ export class ProcessesComponent implements OnInit {
     r4c4.innerHTML="4"
     this.appendChildren(newRow, r4c1, r4c2, r4c3, r4c4);
     table.insertBefore(newRow, table.childNodes[4]);  
+    listOfFields.push(r4c2);
+
   }
 
   createRow5(table){
@@ -187,6 +218,8 @@ export class ProcessesComponent implements OnInit {
     r5c4.innerHTML="4"
     this.appendChildren(newRow, r5c1, r5c2, r5c3, r5c4);
     table.insertBefore(newRow, table.childNodes[5]);  
+    listOfFields.push(r5c2);
+
   }
 
   createRow6(table){
@@ -201,7 +234,9 @@ export class ProcessesComponent implements OnInit {
     r6c3.innerHTML="3"
     r6c4.innerHTML="4"
     this.appendChildren(newRow, r6c1, r6c2, r6c3, r6c4);
-    table.insertBefore(newRow, table.childNodes[6]);  
+    table.insertBefore(newRow, table.childNodes[6]); 
+    listOfFields.push(r6c2);
+ 
   }
   createRow7(table){
     var newRow = document.createElement("tr");  
@@ -216,6 +251,8 @@ export class ProcessesComponent implements OnInit {
     r7c4.innerHTML="4"
     this.appendChildren(newRow, r7c1, r7c2, r7c3, r7c4);
     table.insertBefore(newRow, table.childNodes[7]);  
+    listOfFields.push(r7c2);
+
   }
 
   createRow8(table){
@@ -231,6 +268,8 @@ export class ProcessesComponent implements OnInit {
     r8c4.innerHTML="4"
     this.appendChildren(newRow, r8c1, r8c2, r8c3, r8c4);
     table.insertBefore(newRow, table.childNodes[8]);  
+    listOfFields.push(r8c2);
+
   }
 
   createRow9(table){
@@ -246,6 +285,8 @@ export class ProcessesComponent implements OnInit {
     r9c4.innerHTML="4"
     this.appendChildren(newRow, r9c1, r9c2, r9c3, r9c4);
     table.insertBefore(newRow, table.childNodes[9]);  
+    listOfFields.push(r9c2);
+
   }
 
   createRow10(table){
@@ -261,6 +302,8 @@ export class ProcessesComponent implements OnInit {
     r10c4.innerHTML="4"
     this.appendChildren(newRow, r10c1, r10c2, r10c3, r10c4);
     table.insertBefore(newRow, table.childNodes[10]);  
+    listOfFields.push(r10c2);
+
   }
 
   appendChildren(newRow, arg1, arg2, arg3, arg4){
