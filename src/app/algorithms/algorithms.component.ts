@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Algorithm } from '../algorithms';
 import { ALGORITHMS } from '../all-algorithms';
+import { selectedAlgorithm } from '../../environments/environment';
 
 
 @Component({
@@ -9,15 +10,17 @@ import { ALGORITHMS } from '../all-algorithms';
   styleUrls: ['./algorithms.component.css']
 })
 
-
 export class AlgorithmsComponent implements OnInit {
   algorithms = ALGORITHMS;
-  selectedAlgorithm: Algorithm;
 
-  constructor() { }
+  constructor() {
+   }
 
   ngOnInit() {
+  }
 
+  getSelectedAlgorithm(algorithmName){
+    selectedAlgorithm.algorithmChosen = algorithmName.toString();
   }
 
 }

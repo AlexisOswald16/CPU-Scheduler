@@ -1,7 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { tryParse } from 'selenium-webdriver/http';
+import { selectedAlgorithm } from '../../environments/environment';
 
 var listOfFields: HTMLInputElement[] = [];
+var table = document.getElementById('simulatorTable');
 
 @Component({
   selector: 'app-processes',
@@ -9,12 +10,17 @@ var listOfFields: HTMLInputElement[] = [];
   styleUrls: ['./processes.component.css']
 })
 
-
-export class ProcessesComponent implements OnInit {
+export class ProcessesComponent implements OnInit{
   constructor() { }
 
   ngOnInit() {
     
+  }
+
+  calculateStart(numberOfProcesses){
+    console.log("here")
+    console.log(numberOfProcesses);
+    console.log(selectedAlgorithm.algorithmChosen.toString())
   }
 
   randomBurstTimes(selectedNumber){ // creates correct amount of random integers (for burst times)
@@ -23,7 +29,9 @@ export class ProcessesComponent implements OnInit {
     for(let i = 0; i < amountNeeded; i++){
       listOfRand.push(this.getRandomInt(10));
     }
+    
     this.fillTextFields(listOfRand);
+   
   }
 
   fillTextFields(listOfRand){ // fills random burst times on front end
@@ -44,10 +52,16 @@ export class ProcessesComponent implements OnInit {
       table.removeChild(tableRows[x]);
     }
   }
+  // TODO: Clear all when clear button is clicked
+  // clearAllElements(){
+  //   this.clearTable(table);
+  //   var processOptions = document.getElementById("processesOptions");
+  // }
 
   createTable(number){
-    var table = document.getElementById('simulatorTable');
+    table = document.getElementById('simulatorTable');
     this.clearTable(table); //clears every time choice changes
+    
    
     switch(number){
       case "1":{

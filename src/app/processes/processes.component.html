@@ -1,6 +1,7 @@
 <p id = "processesTag">Number of Processes:
     <span style="padding-left: 50px">
-        <select [(ngModel)]="selectedNumber" ng-model = "numberOfProcesses" (change)= "createTable(selectedNumber)"> 
+        <select id="processesOptions" [(ngModel)]="selectedNumber" (change)= "createTable(selectedNumber)"> 
+            <option ng-option value="0"> </option>
             <option ng-option value="1">1</option>
             <option ng-option value="2">2</option>
             <option ng-option value="3">3</option>
@@ -16,6 +17,8 @@
 </p>
 
 <button (click)="randomBurstTimes(selectedNumber)">Fill Random Burst Times</button>
-<button>Calculate</button>
+<button (click)="calculateStart(selectedNumber)">Calculate</button>
+
+<!--TODO: Add if time <button (click)="clearAllElements(processesOptions)">Clear</button>-->
 
 
