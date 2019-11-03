@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { AlgorithmsComponent } from './algorithms/algorithms.component';
 import { ProcessesComponent } from './processes/processes.component';
+import { FCFSComponent } from './fcfs/fcfs.component';
 
 
 @NgModule({
@@ -13,6 +14,7 @@ import { ProcessesComponent } from './processes/processes.component';
     AppComponent,
     AlgorithmsComponent,
     ProcessesComponent,
+    FCFSComponent,
   ],
   imports: [
     BrowserModule,    
