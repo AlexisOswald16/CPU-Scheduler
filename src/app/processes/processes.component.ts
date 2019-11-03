@@ -35,15 +35,15 @@ export class ProcessesComponent implements OnInit{
     for(let i = 0; i < listOfFields.length; i++){
       listOfBurstTimes.push(listOfFields[i].value);
     }
-    console.log(listOfBurstTimes)
+    //console.log(listOfBurstTimes)
   }
 
-  calculateStart(numberOfProcesses){
+  calculateStart(){
     this.getAllBurstTimes();
     var desiredAlgorithm = selectedAlgorithm.algorithmChosen;
 
     if(desiredAlgorithm == "First Come First Serve"){  
-      FCFS(numberOfProcesses, listOfBurstTimes);
+      FCFS(listOfBurstTimes);
       this.fillTimes();
     }
 
@@ -66,17 +66,12 @@ export class ProcessesComponent implements OnInit{
 
   randomBurstTimes(selectedNumber){ // creates correct amount of random integers (for burst times)
     let listOfRand: number[] = [];
-    var amountNeeded = selectedNumber;
-    for(let i = 0; i < amountNeeded; i++){
+    for(let i = 0; i < selectedNumber; i++){
       listOfRand.push(this.getRandomInt(10));
     }
-    this.fillTextFields(listOfRand);
-  }
-
-  fillTextFields(listOfRand){ // fills random burst times on front end
     for(let i = 0; i < listOfRand.length; i++){
-     listOfFields[i].defaultValue = listOfRand[i].toString();
-    }
+      listOfFields[i].defaultValue = listOfRand[i].toString();
+     }
   }
 
   getRandomInt(max) { // creates random integers (for burst times)
@@ -91,6 +86,7 @@ export class ProcessesComponent implements OnInit{
       table.removeChild(tableRows[x]);
     }
   }
+
   // TODO: Clear all when clear button is clicked
   // clearAllElements(){
   //   this.clearTable(table);

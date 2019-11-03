@@ -1,4 +1,5 @@
-<p id = "ganntChartTitle">Gannt Chart for {{selectedAlgorithm}}</p>
+<p id = "ganntChartTitle">Gannt Chart for: {{selectedAlgorithm}}</p>
+
 <p>Scheduling Algorithm:
     <span style="padding-left: 50px">
         <select [(ngModel)]="selectedAlgorithm" ng-model = "algorithm-type" (change)= "getSelectedAlgorithm(selectedAlgorithm)">

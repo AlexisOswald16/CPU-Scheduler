@@ -5,17 +5,25 @@ var burstTimes = [];
 var waitTimes = [];
 var turnAroundTimes = [];
 
-export function FCFS(numberOfProcesses, burstTimeList){
+export function FCFS(burstTimeList){
   burstTimes = burstTimeList;
-  calculateTimes(numberOfProcesses);
+  clearArrays();
+  calculateTimes();
 }
 
-function calculateTimes(numberOfProcesses){
+function clearArrays(){
+  times.taTimes = [];
+  times.waitTimes = [];
+   waitTimes = [];
+   turnAroundTimes = [];
+}
+
+function calculateTimes(){
   var cumulativeWaitTimes = 0;
   waitTimes.push(cumulativeWaitTimes);
   var cumulativeTATime = 0;
 
-  for(let i = 0; i < numberOfProcesses; i++){
+  for(let i = 0; i < burstTimes.length; i++){
     cumulativeWaitTimes = Number(cumulativeWaitTimes)+Number(burstTimes[i]);
     cumulativeTATime = Number(cumulativeTATime) + Number(burstTimes[i]);
     waitTimes.push(cumulativeWaitTimes);
@@ -23,9 +31,10 @@ function calculateTimes(numberOfProcesses){
   }
   times.taTimes = turnAroundTimes;
   times.waitTimes = waitTimes;
+  console.log(times.taTimes)
+  console.log(times.waitTimes)
+
 }
-
-
 
 @Component({
   selector: 'app-fcfs',
