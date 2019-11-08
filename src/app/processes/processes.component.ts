@@ -35,7 +35,6 @@ export class ProcessesComponent implements OnInit{
     for(let i = 0; i < listOfFields.length; i++){
       listOfBurstTimes.push(listOfFields[i].value);
     }
-    //console.log(listOfBurstTimes)
   }
 
   calculateStart(){
@@ -87,7 +86,7 @@ export class ProcessesComponent implements OnInit{
     }
   }
 
-  // TODO: Clear all when clear button is clicked
+  //TODO: Clear all when clear button is clicked
   // clearAllElements(){
   //   this.clearTable(table);
   //   var processOptions = document.getElementById("processesOptions");

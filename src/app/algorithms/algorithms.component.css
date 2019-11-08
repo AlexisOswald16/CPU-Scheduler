@@ -1,0 +1,29 @@
+ul {
+    width: 100%;
+    display: table;
+    table-layout: fixed;
+    border-collapse: collapse;
+    height: 50px;
+    display: none;
+    width: 400px;
+}
+
+li {
+    display: table-cell;
+    border: 1px solid black;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.processes {
+    display: table;
+    width: 400px;
+    height: 25px;
+    padding-left: 5px;
+}
+
+.processes li {
+    font-size: 20px;
+    display: table-cell;
+    border: 1px solid black;
+}

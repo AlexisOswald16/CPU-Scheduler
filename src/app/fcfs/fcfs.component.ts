@@ -1,21 +1,39 @@
 import { Component, OnInit } from '@angular/core';
 import { times } from '../../environments/environment';
+import { createGanntChart }  from '../algorithms/algorithms.component';
+//import { clearGanntChart }  from '../algorithms/algorithms.component';
+import { displayBottomWaitTimes }  from '../algorithms/algorithms.component';
+
+
 
 var burstTimes = [];
 var waitTimes = [];
 var turnAroundTimes = [];
+var processesOrder = [];
 
 export function FCFS(burstTimeList){
   burstTimes = burstTimeList;
   clearArrays();
+  //clearGanntChart();
   calculateTimes();
+  getProcessesOrder();
+  createGanntChart(burstTimes,processesOrder);
+  displayBottomWaitTimes(turnAroundTimes)
+  //need to make correct element appear, then create evenly spaced list of processes (using another table)
 }
 
 function clearArrays(){
   times.taTimes = [];
   times.waitTimes = [];
-   waitTimes = [];
-   turnAroundTimes = [];
+  waitTimes = [];
+  turnAroundTimes = [];
+}
+
+function getProcessesOrder(){ // the order is always the order they are created for FCFS, so just need to generate not based off of burst/wait times
+  for(let i = 0; i<burstTimes.length; i++){
+    var insertItem = "P" + (i+1);
+    processesOrder[i] = insertItem;
+  }
 }
 
 function calculateTimes(){
@@ -31,9 +49,6 @@ function calculateTimes(){
   }
   times.taTimes = turnAroundTimes;
   times.waitTimes = waitTimes;
-  console.log(times.taTimes)
-  console.log(times.waitTimes)
-
 }
 
 @Component({
