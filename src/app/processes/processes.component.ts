@@ -34,12 +34,18 @@ export class ProcessesComponent implements OnInit{
   getAllBurstTimes(){ //gets the burst times from the form and adds to array
     listOfBurstTimes = []; 
     for(let i = 0; i < listOfFields.length; i++){
-      listOfBurstTimes.push(listOfFields[i].value);
+      if(listOfFields[i].value == "" || listOfFields[i].value.includes("-")|| listOfFields[i].value.includes(".")){ //makes sure that only positive integers are being inserted
+        alert("You cannot have negative numbers, decimal numbers, or blank values for process burst times. Please check your values and try again.")
+        return false;
+      } else { 
+        listOfBurstTimes.push(listOfFields[i].value); //if the value is correct then you can add it to the listOfBurstTimes
+      }
     }
+    return true; //only reached if all inputted values are valid
   }
 
   calculateStart(){ // starts the calculations (on button click)
-    this.getAllBurstTimes(); //gets all burst times 
+    if(this.getAllBurstTimes() == true){ //gets all burst times 
     var desiredAlgorithm = selectedAlgorithm.algorithmChosen; // get the chosen algorithm from the form
 
     if(desiredAlgorithm == "First Come First Serve"){ // starts FCFS
@@ -62,6 +68,9 @@ export class ProcessesComponent implements OnInit{
 
     if(desiredAlgorithm == "Priority"){ // starts Priority
       //to be developed
+    }
+  } else{
+      return;
     }
   }
 
