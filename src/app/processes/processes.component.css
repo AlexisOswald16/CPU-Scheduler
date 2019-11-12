@@ -12,3 +12,8 @@ button {
 #processesOptions {
     font-size: 15px;
 }
+
+#sidenotes {
+    font-size: 12px;
+    color: grey;
+}

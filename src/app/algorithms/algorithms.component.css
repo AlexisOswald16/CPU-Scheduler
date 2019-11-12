@@ -33,3 +33,9 @@ li {
 #algSelect {
     font-size: 15px;
 }
+
+#avgWaitTimes,
+#avgTurnAround {
+    text-align: center;
+    font-weight: bold;
+}

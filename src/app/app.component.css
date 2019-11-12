@@ -22,3 +22,7 @@ body {
     font-family: Optima, sans-serif;
     font-size: 20px;
 }
+
+#simulatorTable {
+    display: none;
+}

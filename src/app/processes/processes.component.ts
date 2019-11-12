@@ -1,8 +1,9 @@
+//imports allow us to use functions from other classes
 import { Component, OnInit, Input, ɵConsole } from '@angular/core';
 import { selectedAlgorithm } from '../../environments/environment';
-import {FCFS} from '../fcfs/fcfs.component';
+import {FCFS} from '../fcfs/fcfs.component'; 
 import {SJF} from '../sjf/sjf.component';
-import { times } from '../../environments/environment';
+import { times } from '../../environments/environment'; // global variables are here
 
 
 var listOfFields: HTMLInputElement[] = [];
@@ -19,10 +20,9 @@ var table = document.getElementById('simulatorTable');
 
 export class ProcessesComponent implements OnInit{
   constructor() { }
-
   ngOnInit() { }
 
-  fillTimes(){ //fills the wait times and ta times on the actual form
+  fillTimes(){ //fills the wait times and ta times on the actual html
     for(let i = 0; i < listOfWaitFields.length; i++){
       listOfWaitFields[i].innerHTML = times.waitTimes[i].toString();
      }
@@ -31,7 +31,7 @@ export class ProcessesComponent implements OnInit{
      }
   }
 
-  getAllBurstTimes(){ //gets the burst times from the form
+  getAllBurstTimes(){ //gets the burst times from the form and adds to array
     listOfBurstTimes = []; 
     for(let i = 0; i < listOfFields.length; i++){
       listOfBurstTimes.push(listOfFields[i].value);
@@ -42,37 +42,37 @@ export class ProcessesComponent implements OnInit{
     this.getAllBurstTimes(); //gets all burst times 
     var desiredAlgorithm = selectedAlgorithm.algorithmChosen; // get the chosen algorithm from the form
 
-    if(desiredAlgorithm == "First Come First Serve"){ //starts FCFS
+    if(desiredAlgorithm == "First Come First Serve"){ // starts FCFS
       FCFS(listOfBurstTimes); 
       this.fillTimes();
     }
 
-    if(desiredAlgorithm == "Shortest Job First (SJF)"){ //starts SJF
+    if(desiredAlgorithm == "Shortest Job First (SJF)"){ // starts SJF
       SJF(listOfBurstTimes); 
       this.fillTimes();
     }
 
-    if(desiredAlgorithm == "Shortest Remaining Time First"){
+    if(desiredAlgorithm == "Shortest Remaining Time First"){ // starts STRF
       //to be developed
     }
 
-    if(desiredAlgorithm == "Round Robin"){
+    if(desiredAlgorithm == "Round Robin"){ // starts RR
       //to be developed
     }
 
-    if(desiredAlgorithm == "Priority"){
+    if(desiredAlgorithm == "Priority"){ // starts Priority
       //to be developed
     }
   }
 
-  refreshPage(){ //using as a clear button for now- ideally would not be a page refresh
+  refreshPage(){ // using as a clear button for now- ideally would not be a page refresh, and would set all to original positions.
     location.reload();
   }
 
   randomBurstTimes(selectedNumber){ // creates correct amount of random integers (for burst times)
     let listOfRand: number[] = [];
     for(let i = 0; i < selectedNumber; i++){
-      listOfRand.push(this.getRandomInt(10));
+      listOfRand.push(this.getRandomInt(10)); //gets a random integer between 0 and 10.
     }
     for(let i = 0; i < listOfRand.length; i++){
       listOfFields[i].defaultValue = listOfRand[i].toString(); //sets the actual inputs to the random values
@@ -85,17 +85,18 @@ export class ProcessesComponent implements OnInit{
 
   clearTable(table){ //clears all fields (reset on button click, essentially)
     listOfFields = [];
-    var tableRows = table.getElementsByTagName('tr');
+    var tableRows = table.getElementsByTagName('tr'); 
     var rowCount = tableRows.length;
-    for (var i=rowCount-1; i > 0; i--) {
+    for (var i = rowCount-1; i > 0; i--) { //gets all tablerows and removes them from the table, from last added to first added
       table.removeChild(tableRows[i]);
     }
   }
 
   createTable(number){
-    table = document.getElementById('simulatorTable');
+    table = document.getElementById('simulatorTable'); //gets the table
+    table.style.display = "table"; //displays the teable header
     this.clearTable(table); //clears every time choice changes
-    switch(number){
+    switch(number){ //need to optimize using array, but for now this is how the table is created
       case "1":{
         this.createRow1(table) ; 
         break;

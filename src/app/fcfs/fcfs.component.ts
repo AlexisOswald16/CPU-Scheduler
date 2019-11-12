@@ -16,7 +16,7 @@ export function FCFS(burstTimeList){
   calculateAverageTimes(); //calculates the average times for each 
   getProcessesOrder(); //gets the order of the processes for the gantt chart
   createGanntChart(burstTimes,processesOrder); //creates the actual gantt chart
-  //displayBottomWaitTimes(turnAroundTimes) //displays the wait times at the bottom
+  //displayBottomWaitTimes(turnAroundTimes) //displays the wait times at the bottom (TODO)
 }
 
 function clearArrays(){ //makes sure all arrays are empty before FCFS tries to run.
@@ -27,28 +27,33 @@ function clearArrays(){ //makes sure all arrays are empty before FCFS tries to r
 }
 
 function calculateAverageTimes(){ //calculates avg turn around and wait times for FCFS 
-  var sumWait = 0; //initializing variables
+ //initializing variables
+  var sumWait = 0; 
   var sumTurn = 0;
+
   for(let i = 0; i < waitTimes.length-1;i++){ //uses waitTimes except for last element (1 too many), gets values and adds them all.
     var currentElem = parseInt(waitTimes[i]);
-    sumWait += currentElem;
+    sumWait += currentElem; //cumulative sum of wait times
   }
+
   for(let i = 0; i < turnAroundTimes.length;i++){ //uses all of turnAround Times, gets values and adds them all.
     var currentElem2 = parseInt(turnAroundTimes[i]);
-    sumTurn += currentElem2;
+    sumTurn += currentElem2; // cumulative sum of turn around times
   }
-  var averageWaitTimes = sumWait/(waitTimes.length-1); //finds the average using values from above 
+
+  //finds the average using values from above 
+  var averageWaitTimes = sumWait/(waitTimes.length-1); 
   var averageTurnAround = sumTurn/(turnAroundTimes.length);
 
   //displays the averages rounded to 2 decimal places
-  document.getElementById("avgWaitTimes").innerHTML = "Average Wait Times: " + averageWaitTimes.toFixed(2); 
-  document.getElementById("avgTurnAround").innerHTML = "Average Turn Around Times: " + averageTurnAround.toFixed(2);
+  document.getElementById("avgWaitTimes").innerHTML = "Average Wait Times: " + averageWaitTimes.toFixed(2)+ " ms"; 
+  document.getElementById("avgTurnAround").innerHTML = "Average Turn Around Times: " + averageTurnAround.toFixed(2) + " ms";
 }
 
 function getProcessesOrder(){ // the order is always the order they are created for FCFS, so just need to generate not based off of burst/wait times
   for(let i = 0; i<burstTimes.length; i++){
-    var insertItem = "P" + (i+1); //dynamically inserting P1 through P(the length of burstTimes)
-    processesOrder[i] = insertItem;
+    var insertItem = "P" + (i+1); // dynamically inserting P1 through P(the length of burstTimes)
+    processesOrder[i] = insertItem; 
   }
 }
 
@@ -63,8 +68,9 @@ function calculateTimes(){ // calculates the wait and turn around times
     waitTimes.push(cumulativeWaitTimes); // adds the wait time to the array
     turnAroundTimes.push(cumulativeTATime); // adds the TA time to the array
   }
-  times.taTimes = turnAroundTimes; //copies to global variable
-  times.waitTimes = waitTimes; //copies to global variable
+  //copies to global variables
+  times.taTimes = turnAroundTimes; 
+  times.waitTimes = waitTimes; 
 }
 
 @Component({
@@ -72,7 +78,6 @@ function calculateTimes(){ // calculates the wait and turn around times
   templateUrl: './fcfs.component.html',
   styleUrls: ['./fcfs.component.css']
 })
-
 export class FCFSComponent implements OnInit {
   constructor() { }
   ngOnInit() {
