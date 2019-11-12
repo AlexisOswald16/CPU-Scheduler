@@ -84,15 +84,17 @@ export class ProcessesComponent implements OnInit{
   randomBurstTimes(selectedNumber){ // creates correct amount of random integers (for burst times)
     let listOfRand: number[] = [];
     for(let i = 0; i < selectedNumber; i++){
-      listOfRand.push(this.getRandomInt(10)); //gets a random integer between 0 and 10.
+      listOfRand.push(this.getRandomInt(1,10)); //gets a random integer between 0 and 30.
     }
     for(let i = 0; i < listOfRand.length; i++){
       listOfFields[i].defaultValue = listOfRand[i].toString(); //sets the actual inputs to the random values
      }
   }
 
-  getRandomInt(max) { // creates random integers (for burst times)
-    return Math.floor(Math.random() * Math.floor(max));
+  getRandomInt(min, max) { // creates random integers (for burst times)
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
   clearTable(table){ //clears all fields (reset on button click, essentially)

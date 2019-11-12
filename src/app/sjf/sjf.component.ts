@@ -13,7 +13,7 @@ export function SJF(listOfBurstTimes){
   burstTimes = listOfBurstTimes; //copies to local variable
   clearArrays(); //prepares all arrays for new input
   calculateTimes(); // calculates all times- wait times, turn around times, and average times
-  calculateAverageTimes();
+  calculateAverageTimes(); //calculates averages
   createGanntChart(burstTimes,getProcessesOrder()); //creates the actual gantt chart
 }
 
@@ -56,7 +56,7 @@ function reorderTimes(){ //reorders the times based on the original mainarray, p
 
 function create2dArray(){ //creates 2d array to keep track of process and corresponding burst time
   for(let i = 0; i < burstTimes.length; i++){
-    mainArray[i] = [(i+1),burstTimes[i]]; // element0 = process number, element1 = burst time
+    mainArray[i] = [(i+1), burstTimes[i]]; // element0 = process number, element1 = burst time
   }
 }
 
@@ -74,7 +74,7 @@ function getTurnAroundTimes(){
 }
 
 function sortSecondColumn(a, b) { //sorts the second column of 2d array from least to greatest
-    if (a[1] === b[1]) {
+  if (a[1] === b[1]) {
         return 0;
     }
     else {
@@ -94,6 +94,7 @@ function calculateAverageTimes(){ //calculates avg turn around and wait times fo
   //initializing variables
   var sumWait = 0;
   var sumTurn = 0;
+
   // gets rid of first empty value
   times.taTimes.shift(); 
   times.waitTimes.shift();
