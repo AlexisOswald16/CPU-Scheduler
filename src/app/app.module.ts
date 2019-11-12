@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { AlgorithmsComponent } from './algorithms/algorithms.component';
 import { ProcessesComponent } from './processes/processes.component';
 import { FCFSComponent } from './fcfs/fcfs.component';
+import { SjfComponent } from './sjf/sjf.component';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import { FCFSComponent } from './fcfs/fcfs.component';
     AlgorithmsComponent,
     ProcessesComponent,
     FCFSComponent,
+    SjfComponent,
   ],
   imports: [
     BrowserModule,    

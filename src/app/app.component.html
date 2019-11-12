@@ -1,31 +1,18 @@
-<style>
-td{
-  padding-right:50px;
-}
-#simulatorTable{
-  padding-left:50px;
-  width:100%;
-}
-</style>
+<body>
 
 
-<title>CPU Scheduler</title>
+    <h1>CPU Scheduler Simulator</h1>
 
-<h1>CPU Scheduler Simulator</h1>
+    <table id="simulatorTable">
+        <tr>
+            <td><u>Process</u></td>
+            <td><u>Burst(ms)</u></td>
+            <td><u>Wait Time</u></td>
+            <td><u>Turnaround Time</u></td>
+        </tr>
+    </table>
 
-<table id = "simulatorTable">
-    <tr>
-       <td><u>Process</u></td>
-       <td><u>Burst(ms)</u></td>
-       <td><u>Wait Time</u></td>
-       <td><u>Turnaround Time</u></td>
-  </tr>  
-</table>
+    <app-algorithms></app-algorithms>
+    <app-processes></app-processes>
 
-
-<app-algorithms></app-algorithms>
-<app-processes></app-processes>
-
-
-
-
+</body>

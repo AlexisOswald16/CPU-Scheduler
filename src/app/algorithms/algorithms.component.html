@@ -1,4 +1,4 @@
-<p id="ganntChartTitle">Gannt Chart for: {{selectedAlgorithm}}</p>
+<p id="ganttChartTitle" style="display: none;">Gannt Chart for: {{selectedAlgorithm}}</p>
 
 <ul id="1Processes">
     <li class="b1"> </li>
@@ -90,9 +90,11 @@
 <ul id="processList" class="processes">
 </ul>
 
+<p id="avgWaitTimes"></p>
+<p id="avgTurnAround"></p>
 <p>Scheduling Algorithm:
     <span style="padding-left: 50px">
-        <select [(ngModel)]="selectedAlgorithm" ng-model = "algorithm-type" (change)= "getSelectedAlgorithm(selectedAlgorithm)">
+        <select id="algSelect" [(ngModel)]="selectedAlgorithm" ng-model = "algorithm-type" (change)= "getSelectedAlgorithm(selectedAlgorithm)">
             <option *ngFor="let algorithm of algorithms"> {{algorithm.name}}</option>
         </select>
     </span>

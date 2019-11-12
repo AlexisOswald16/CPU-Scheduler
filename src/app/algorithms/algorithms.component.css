@@ -6,6 +6,7 @@ ul {
     height: 50px;
     display: none;
     width: 400px;
+    margin: 0;
 }
 
 li {
@@ -20,10 +21,15 @@ li {
     width: 400px;
     height: 25px;
     padding-left: 5px;
+    margin: 0;
 }
 
 .processes li {
     font-size: 20px;
     display: table-cell;
     border: 1px solid black;
+}
+
+#algSelect {
+    font-size: 15px;
 }

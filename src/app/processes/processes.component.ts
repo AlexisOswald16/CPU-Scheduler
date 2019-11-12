@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, ɵConsole } from '@angular/core';
 import { selectedAlgorithm } from '../../environments/environment';
 import {FCFS} from '../fcfs/fcfs.component';
+import {SJF} from '../sjf/sjf.component';
 import { times } from '../../environments/environment';
 
 
@@ -21,7 +22,7 @@ export class ProcessesComponent implements OnInit{
 
   ngOnInit() { }
 
-  fillTimes(){
+  fillTimes(){ //fills the wait times and ta times on the actual form
     for(let i = 0; i < listOfWaitFields.length; i++){
       listOfWaitFields[i].innerHTML = times.waitTimes[i].toString();
      }
@@ -30,37 +31,42 @@ export class ProcessesComponent implements OnInit{
      }
   }
 
-  getAllBurstTimes(){
+  getAllBurstTimes(){ //gets the burst times from the form
     listOfBurstTimes = []; 
     for(let i = 0; i < listOfFields.length; i++){
       listOfBurstTimes.push(listOfFields[i].value);
     }
   }
 
-  calculateStart(){
-    this.getAllBurstTimes();
-    var desiredAlgorithm = selectedAlgorithm.algorithmChosen;
+  calculateStart(){ // starts the calculations (on button click)
+    this.getAllBurstTimes(); //gets all burst times 
+    var desiredAlgorithm = selectedAlgorithm.algorithmChosen; // get the chosen algorithm from the form
 
-    if(desiredAlgorithm == "First Come First Serve"){  
-      FCFS(listOfBurstTimes);
+    if(desiredAlgorithm == "First Come First Serve"){ //starts FCFS
+      FCFS(listOfBurstTimes); 
       this.fillTimes();
     }
 
-    if(desiredAlgorithm == "Shortest Job First (SJF)"){
-
+    if(desiredAlgorithm == "Shortest Job First (SJF)"){ //starts SJF
+      SJF(listOfBurstTimes); 
+      this.fillTimes();
     }
 
     if(desiredAlgorithm == "Shortest Remaining Time First"){
-
+      //to be developed
     }
 
     if(desiredAlgorithm == "Round Robin"){
-
+      //to be developed
     }
 
     if(desiredAlgorithm == "Priority"){
-
+      //to be developed
     }
+  }
+
+  refreshPage(){ //using as a clear button for now- ideally would not be a page refresh
+    location.reload();
   }
 
   randomBurstTimes(selectedNumber){ // creates correct amount of random integers (for burst times)
@@ -69,7 +75,7 @@ export class ProcessesComponent implements OnInit{
       listOfRand.push(this.getRandomInt(10));
     }
     for(let i = 0; i < listOfRand.length; i++){
-      listOfFields[i].defaultValue = listOfRand[i].toString();
+      listOfFields[i].defaultValue = listOfRand[i].toString(); //sets the actual inputs to the random values
      }
   }
 
@@ -81,16 +87,10 @@ export class ProcessesComponent implements OnInit{
     listOfFields = [];
     var tableRows = table.getElementsByTagName('tr');
     var rowCount = tableRows.length;
-    for (var x=rowCount-1; x>0; x--) {
-      table.removeChild(tableRows[x]);
+    for (var i=rowCount-1; i > 0; i--) {
+      table.removeChild(tableRows[i]);
     }
   }
-
-  //TODO: Clear all when clear button is clicked
-  // clearAllElements(){
-  //   this.clearTable(table);
-  //   var processOptions = document.getElementById("processesOptions");
-  // }
 
   createTable(number){
     table = document.getElementById('simulatorTable');
