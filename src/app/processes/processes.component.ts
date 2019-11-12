@@ -34,8 +34,8 @@ export class ProcessesComponent implements OnInit{
   getAllBurstTimes(){ //gets the burst times from the form and adds to array
     listOfBurstTimes = []; 
     for(let i = 0; i < listOfFields.length; i++){
-      if(listOfFields[i].value == "" || listOfFields[i].value.includes("-")|| listOfFields[i].value.includes(".")){ //makes sure that only positive integers are being inserted
-        alert("You cannot have negative numbers, decimal numbers, or blank values for process burst times. Please check your values and try again.")
+      if(listOfFields[i].value == "" || listOfFields[i].value.includes("-")|| listOfFields[i].value.includes(".") || Number.isNaN(Number(listOfFields[i].value))){ //makes sure that only positive integers are being inserted
+        alert("You cannot have characters, negative numbers, decimal numbers, or blank values for process burst times. Only input positive integers.\n\nPlease check your values and try again.")
         return false;
       } else { 
         listOfBurstTimes.push(listOfFields[i].value); //if the value is correct then you can add it to the listOfBurstTimes
@@ -49,8 +49,8 @@ export class ProcessesComponent implements OnInit{
     var desiredAlgorithm = selectedAlgorithm.algorithmChosen; // get the chosen algorithm from the form
 
     if(desiredAlgorithm == "First Come First Serve"){ // starts FCFS
-      FCFS(listOfBurstTimes); 
-      this.fillTimes();
+      FCFS(listOfBurstTimes); // all calculations occur here
+      this.fillTimes(); // fills all of the elements on the screen
     }
 
     if(desiredAlgorithm == "Shortest Job First (SJF)"){ // starts SJF
@@ -59,14 +59,17 @@ export class ProcessesComponent implements OnInit{
     }
 
     if(desiredAlgorithm == "Shortest Remaining Time First"){ // starts STRF
+      alert("This has not been developed. Please choose either First Come First Serve or Shortest Job First.")
       //to be developed
     }
 
     if(desiredAlgorithm == "Round Robin"){ // starts RR
+      alert("This has not been developed. Please choose either First Come First Serve or Shortest Job First.")
       //to be developed
     }
 
     if(desiredAlgorithm == "Priority"){ // starts Priority
+      alert("This has not been developed. Please choose either First Come First Serve or Shortest Job First.")
       //to be developed
     }
   } else{

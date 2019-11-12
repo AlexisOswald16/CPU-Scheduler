@@ -13,9 +13,10 @@ td {
 }
 
 h1 {
-    color: blue;
+    color: lightblue;
     text-align: center;
     font-family: Optima, sans-serif;
+    text-shadow: 2px 2px 2px grey;
 }
 
 body {

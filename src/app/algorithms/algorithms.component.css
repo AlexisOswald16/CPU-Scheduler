@@ -39,3 +39,19 @@ li {
     text-align: center;
     font-weight: bold;
 }
+
+.b1,
+.b3,
+.b5,
+.b7,
+.b9 {
+    background-color: lightblue;
+}
+
+.b2,
+.b4,
+.b6,
+.b8,
+.b10 {
+    background-color: lightgrey;
+}
